@@ -1,0 +1,24 @@
+{
+  "name": "homework",
+  "version": "0.0.0",
+  "description": "Outco student homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vokoshyv/homework.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/vokoshyv/homework/issues"
+  },
+  "dependencies": {
+    "chai": "~3.4.1",
+    "gulp": "~3.9.0",
+    "mocha": "~2.3.4",
+    "gulp-shell": "~0.5.1"
+  }
+}
