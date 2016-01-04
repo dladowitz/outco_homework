@@ -47,7 +47,9 @@ npm install
 
 We have tests set up for your homework assignments. To run 
 them, simply run `gulp` in the root directory of the 
-homework repository. From here, go ahead and begin coding 
+homework repository.
+
+Navigate into the current day's homework folder and begin coding 
 in your respective file (Ruby or JavaScript). Whenever you 
 save your work, Node will run the tests written in the 
 bottom of each file, and display the results in your 
