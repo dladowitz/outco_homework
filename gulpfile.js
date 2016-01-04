@@ -5,8 +5,8 @@ var shell = require('gulp-shell');
 
 
 var paths = {
-  week1day2JS: 'work/week1day2/recursion_1.js', 
-  week1day2RB: 'work/week1day2/recursion_1.rb'
+  week1day2JS: 'homework_folder/week1day2/recursion_1.js', 
+  week1day2RB: 'homework_folder/week1day2/recursion_1.rb'
 }
 
 gulp.task('week1day2JS', shell.task([
