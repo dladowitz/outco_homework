@@ -53,6 +53,20 @@ save your work, Node will run the tests written in the
 bottom of each file, and display the results in your 
 terminal. 
 
+To hard-run tests individually (or if you notice hangups 
+while using the Gulp watcher), you can run them in your 
+terminal by running `gulp` and the specific homework 
+assignment. For example, if you wanted to run the Ruby tests 
+for the home work assignment on week 1, day 3, you would run: 
+```
+gulp week1day3RB
+```
+
+For JavaScript, the same homework assignment would be: 
+``` 
+gulp week1day3JS
+```
+
 ### Pulling new problems
 
 At the end of each class, the homework problems for the 
