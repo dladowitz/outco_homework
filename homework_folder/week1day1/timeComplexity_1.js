@@ -1,9 +1,10 @@
 /**
- *  Additonal Problems: Complexity Analysis
+ *  Homework I
  *
  *  Instructions:
  *   List the Time and Auxiliary Space Complexity of each of the following functions in the space provided
  **/
+
 
 /**
  * Problem 1:
@@ -11,17 +12,16 @@
  *  Auxiliary Space Complexity: 
  **/
 
-function findMax(array){
-  var maximum = array[0];
+function firstTimesLast(array) {
+  var result = null;
 
-  for(var i = 1; i < count(array); i++) {
-    if(array[i] > maximum) {
-      maximum = array[i]
-    }
+  if (array.length < 2) {
+    return result;
+  } else {
+    result = array[0] * array[length-1];
+    return result;
   }
-
-  return  maximum;
-}
+};
 
 /**
  * Problem 2:
@@ -29,22 +29,31 @@ function findMax(array){
  *  Auxiliary Space Complexity: 
  **/
 
-function primeFactors(n){
-  var factors = []; 
-  var divisor = 2;
+function mostFrequentOccurrence(string) {
+  var lowerString = string.toLowerCase();
+  var letters = {};
+  var mostFrequent = [];
   
-  while(n > 2){
-    if(n % divisor == 0) {
-      factors.push(divisor); 
-      n = n / divisor;
+  for(var i = 0; i < lowerString.length; i++) {
+    if (letters[lowerString[i]]) {
+      letters[lowerString[i]] ++;
+    } else {
+      letters[lowerString[i]] = 1;
     }
-    else { 
-      divisor++; 
-    }     
   }
 
-  return factors;
-}
+  for(var key in letters) {
+    if (!mostFrequent.length) {
+      mostFrequent = [key, letters[key]];
+    } else {
+      if (letters[key] > mostFrequent[1]) {
+        mostFrequent = [key, letters[key]];
+      }
+    }
+  }
+
+  return mostFrequent[0];
+};
 
 /**
  * Problem 3:
@@ -52,14 +61,12 @@ function primeFactors(n){
  *  Auxiliary Space Complexity: 
  **/
 
-function indexOf(element){
-  for (var x = 0, count = this.length; x < count; x++) {
-    if(this[x] === element) {
-      return x;
+function printUnorderedPairs(array) {
+ for (var i = 0; i < array.length; i++) {
+    for (var j = i; j < array.length; j++) {
+      console.log(array[i] + "," + array[j]);
     }
   }
-
-  return -1;
 };
 
 /**
@@ -68,14 +75,18 @@ function indexOf(element){
  *  Auxiliary Space Complexity: 
  **/
 
-function slice(begin){
-  var newArray = [];
-
-  for (var x = begin, count = this.length; x < count; x++) {
-    newArray.push(this[x]);
-  }
-
-  return newArray;
+function sortedArraySearch(sortedArray, target) {
+  var mid = Math.floor(sortedArray.length / 2);
+  
+  if (sortedArray[mid] === target) {
+    return sortedArray[mid];
+  } else if (sortedArray[mid] < target && sortedArray.length > 1) {
+    return sortedArraySearch(sortedArray.splice(mid, Number.MAX_VALUE), target);
+  } else if (sortedArray[mid] > target && sortedArray.length > 1) {
+    return sortedArraySearch(sortedArray.splice(0, mid), target);
+  } else {
+    return -1;
+  }   
 };
 
 /**
@@ -84,89 +95,19 @@ function slice(begin){
  *  Auxiliary Space Complexity: 
  **/
 
-function doTheDo (string) {
-  var len = string.length;
-  var counter = 0;
-  var copy = "";
-
-  do {
-    do {
-      copy += string + string;
-      counter++;
-    } while (counter > len)
-  } while (!copy)
-
-  return copy;
-};
-
-/**
- * Problem 6:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
- **/
-
-function nestedAdd (array) {
-  var len = array.length;
-  var tempSum = 0;
-  var subArr = [];
+function makeCombinedMatrix(arrayOne, arrayTwo) {
   var result = [];
-  var j, k;
+  var row;
 
-  for (var i = 0; i < len; i++) {
-    j = 0;
+  for (var i = 0; i < arrayOne.length; i++) {
+    row = [];
 
-    while (j < len) {
-      k = j;
-
-      do {
-        tempSum += array[k];
-        k++;
-      } while (k < len)
-
-      subArr.push(tempSum);
-      tempSum = 0;
-      j++;
+    for (var j = 0; j < arrayTwo.length; j++) {
+      row.push(arrayTwo[j] + arrayOne[i]);
     }
 
-    result.push(subArr);
-    subArr = [];
+    result.push(row);
   }
 
   return result;
-};
-
-/**
- * Problem 7:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
- **/
-
-function traverseDOM() {
-
-  function traverse(child) {
-    var len = child.children.length || 0;
-
-    console.log(child.nodeName);
-
-    for(var i = 0; i < len; i++) {
-      traverse(child.children[i]);
-    }
-  };
-
-  traverse(document.body);
-};
-
-/**
- * Problem 8:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
- **/
-
-function mystery(a, b) {
-  if (b === 0)         
-    return 0;
-  else if (b % 2 === 0) 
-    return mystery(a + a, b / 2);
-  else                 
-    return mystery(a + a, b / 2) + a;
 };
