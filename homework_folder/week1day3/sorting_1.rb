@@ -41,12 +41,12 @@
 
 
 def insertionSort(input)
-  return input
+  # your work here
 end
 
 
 def selectionSort(input)
-  return input
+  # your work here
 end
 
 

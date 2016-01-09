@@ -40,12 +40,12 @@
    **********************************************************/
 
 var insertionSort = function(input){
-  return input;
+  // your work here
 }
 
 
 var selectionSort = function(input){
-  return input;
+  // your work here
 }
 
 
