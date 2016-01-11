@@ -45,3 +45,22 @@
  #  **********************************************************************************/
 
 
+class ListNode
+  
+  def value
+    @value
+  end
+
+  def next
+    @next
+  end
+
+  def initialize(value)
+    @value = value
+  end
+
+end
+
+test = ListNode.new(4)
+
+test.value
