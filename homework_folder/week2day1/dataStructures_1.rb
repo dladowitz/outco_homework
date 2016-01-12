@@ -62,73 +62,73 @@ class Node
   attr_accessor :val
   attr_accessor :next
 end
-# ​
-# class Linked_List
-#   def initialize()
-#     @head = nil
-#     @tail = nil
-#     @length = 0
-#   end
-# ​
-#   attr_reader :head
-#   attr_reader :tail
-#   attr_reader :length
-# ​
-#   def append(val)
-#     insert(val, @tail)
-#   end
-# ​
-#   def insert(val, prev_node)
-#     new_node = Node.new(val)
-#     if !prev_node
-#       if !@head
-#         @tail = new_node
-#       else
-#         new_node.next = @head.next
-#       end
-#       @head = new_node
-#     else
-#       new_node.next = prev_node.next
-#       prev_node.next = new_node
-#       if @tail == prev_node
-#         @tail = new_node
-#       end
-#     end
-#     @length += 1
-#     return
-#   end
-# ​
-#   def delete(val)
-#     prev_node, current_node = search(val)
-#     return "Value to delete not found" if prev_node == false
-#     if @tail == current_node
-#       @tail = prev_node
-#     end
-#     if prev_node == nil
-#       @head = current_node.next
-#     else
-#       prev_node.next = current_node.next
-#     end
-#     @length -= 1
-#   end
-# ​
-#   def contains(val)
-#     return !!search(val)
-#   end
-# ​
-#   def search(val)
-#     prev_node = nil
-#     current_node = @head
-#     while current_node
-#       if current_node.val == val
-#         return [prev_node, current_node]
-#       end
-#       prev_node = current_node
-#       current_node = current_node.next
-#     end
-#     return false
-#   end
-# end
+
+class Linked_List
+  def initialize()
+    @head = nil
+    @tail = nil
+    @length = 0
+  end
+
+  attr_reader :head
+  attr_reader :tail
+  attr_reader :length
+
+  def append(val)
+    insert(val, @tail)
+  end
+
+  def insert(val, prev_node)
+    new_node = Node.new(val)
+    if !prev_node
+      if !@head
+        @tail = new_node
+      else
+        new_node.next = @head.next
+      end
+      @head = new_node
+    else
+      new_node.next = prev_node.next
+      prev_node.next = new_node
+      if @tail == prev_node
+        @tail = new_node
+      end
+    end
+    @length += 1
+    return
+  end
+
+  def delete(val)
+    prev_node, current_node = search(val)
+    return "Value to delete not found" if prev_node == false
+    if @tail == current_node
+      @tail = prev_node
+    end
+    if prev_node == nil
+      @head = current_node.next
+    else
+      prev_node.next = current_node.next
+    end
+    @length -= 1
+  end
+
+  def contains(val)
+    return !!search(val)
+  end
+
+  def search(val)
+    prev_node = nil
+    current_node = @head
+    while current_node
+      if current_node.val == val
+        return [prev_node, current_node]
+      end
+      prev_node = current_node
+      current_node = current_node.next
+    end
+    return false
+  end
+end
 
 # # Test cases
 # list = Linked_List.new()
@@ -186,13 +186,26 @@ class LinkedListNodeTest < Test::Unit::TestCase
 end
 
 class LinkedListClassTest < Test::Unit::TestCase
-  def test_linked_list_properties
+  def test_linked_list_properties_existence
+    test = Linked_List.new();
+
+    assert_respond_to(test, :head);
+    assert_respond_to(test, :tail);
+    assert_respond_to(test, :length);
+
   end
 
   def test_linked_list_methods_existence
+    test = Linked_List.new()
+
+    assert_respond_to(test, :append);
+    assert_respond_to(test, :insert);
+    assert_respond_to(test, :delete);
+    assert_respond_to(test, :contains);
   end
 
   def test_linked_list_append_method
+    
   end
 
   def test_linked_list_insert_method
