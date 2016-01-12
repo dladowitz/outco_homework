@@ -67,96 +67,31 @@ class Linked_List
   def initialize()
     @head = nil
     @tail = nil
-    @length = 0
+    @listLength = 0
   end
 
   attr_reader :head
   attr_reader :tail
-  attr_reader :length
+  attr_reader :listLength
 
   def append(val)
-    insert(val, @tail)
   end
 
-  def insert(val, prev_node)
-    new_node = Node.new(val)
-    if !prev_node
-      if !@head
-        @tail = new_node
-      else
-        new_node.next = @head.next
-      end
-      @head = new_node
-    else
-      new_node.next = prev_node.next
-      prev_node.next = new_node
-      if @tail == prev_node
-        @tail = new_node
-      end
-    end
-    @length += 1
-    return
+  def insert(insertVal, searchVal)
   end
 
   def delete(val)
-    prev_node, current_node = search(val)
-    return "Value to delete not found" if prev_node == false
-    if @tail == current_node
-      @tail = prev_node
-    end
-    if prev_node == nil
-      @head = current_node.next
-    else
-      prev_node.next = current_node.next
-    end
-    @length -= 1
   end
 
   def contains(val)
-    return !!search(val)
   end
 
-  def search(val)
-    prev_node = nil
-    current_node = @head
-    while current_node
-      if current_node.val == val
-        return [prev_node, current_node]
-      end
-      prev_node = current_node
-      current_node = current_node.next
-    end
-    return false
-  end
 end
 
-# # Test cases
-# list = Linked_List.new()
-# puts list.length # 0
 
-# list.append(10)
-# puts list.length # 1
 
-# puts list.contains(10) # true
-# puts list.contains(5) # false
 
-# list.append(5)
-# print list.search(5) # [node 10, node 5]
-# puts
-# puts list.search(8) # false
-# print list.search(10) # [nil, node 10]
-# puts
-# list.append(15)
-# list.delete(15) 
-# puts list.contains(15) # false
-# print list.tail # Node 5
-# puts
-# list.delete(10)
-# puts list.head  # Node 5
-# list.delete(5)
-# puts list.head # nil
-# puts list.tail # nil
-# puts list.length # 0
+
 # //////////////////////////////////////////////////////////
 # ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
 # //////////////////////////////////////////////////////////
@@ -187,33 +122,144 @@ end
 
 class LinkedListClassTest < Test::Unit::TestCase
   def test_linked_list_properties_existence
-    test = Linked_List.new();
+    test = Linked_List.new()
 
-    assert_respond_to(test, :head);
-    assert_respond_to(test, :tail);
-    assert_respond_to(test, :length);
+    assert_respond_to(test, :head)
+    assert_respond_to(test, :tail)
+    assert_respond_to(test, :listLength)
 
   end
 
   def test_linked_list_methods_existence
     test = Linked_List.new()
 
-    assert_respond_to(test, :append);
-    assert_respond_to(test, :insert);
-    assert_respond_to(test, :delete);
-    assert_respond_to(test, :contains);
+    assert_respond_to(test, :append)
+    assert_respond_to(test, :insert)
+    assert_respond_to(test, :delete)
+    assert_respond_to(test, :contains)
   end
 
-  def test_linked_list_append_method
-    
+  def test_linked_list_append_method_single_node
+    test = Linked_List.new()
+    test.append(5)
+
+    assert_equal(5, test.head.value)
+    assert_equal(5, test.tail.value)
   end
 
-  def test_linked_list_insert_method
+  def test_linked_list_append_method_two_node
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+
+    assert_equal(5, test.head.value)
+    assert_equal(10, test.tail.value)
   end
 
-  def test_linked_list_delete_method
+  def test_linked_list_insert_method_between_nodes
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.insert(13, 5)
+
+    assert_equal(5, test.head.value)
+    assert_equal(13, test.head.next.value)
+    assert_equal(10, test.head.next.next.value)
+    assert_equal(10, test.tail.value)
   end
 
-  def test_linked_list_contains_method
+  def test_linked_list_insert_method_modify_tail
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.insert(13, 10)
+
+    assert_equal(5, test.head.value)
+    assert_equal(10, test.head.next.value)
+    assert_equal(13, test.head.next.next.value)
+    assert_equal(13, test.tail.value)
+  end
+
+  def test_linked_list_insert_method_no_searchValue_match
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.insert(13, 17)
+
+    assert_equal(5, test.head.value)
+    assert_equal(10, test.head.next.value)
+    assert_equal(10, test.tail.value)
+    assert_equal(2, test.listLength)
+  end
+
+  def test_linked_list_delete_method_delete_middle
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+    test.delete(1)
+
+    assert_equal(5, test.head.value)
+    assert_equal(15, test.tail.value)
+    assert_equal(15, test.head.next.value)
+    assert_equal(2, test.listLength)
+  end
+
+  def test_linked_list_delete_method_delete_head
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+    test.delete(1)
+
+    assert_equal(5, test.head.value)
+    assert_equal(15, test.tail.value)
+    assert_equal(15, test.head.next.value)
+    assert_equal(2, test.listLength)
+  end
+
+  def test_linked_list_delete_method_delete_tail
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+    test.delete(2)
+
+    assert_equal(5, test.head.value)
+    assert_equal(10, test.tail.value)
+    assert_equal(10, test.head.next.value)
+    assert_equal(2, test.listLength)
+  end
+
+  def test_linked_list_delete_method_delete_out_of_range
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+    test.delete(5)
+
+    assert_equal(5, test.head.value)
+    assert_equal(15, test.tail.value)
+    assert_equal(10, test.head.next.value)
+    assert_equal(15, test.head.next.next.value)
+    assert_equal(3, test.listLength)
+  end
+
+  def test_linked_list_contains_method_when_true
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+
+    assert_equal(true, test.contains(10))
+  end
+
+  def test_linked_list_contains_method_when_false
+    test = Linked_List.new()
+    test.append(5)
+    test.append(10)
+    test.append(15)
+
+    assert_equal(false, test.contains(75))
   end
 end
