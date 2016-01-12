@@ -53,7 +53,7 @@ class Node
   def next
     @next
   end
-  
+
   def initialize(val)
     @value = val
     @next = nil
@@ -182,5 +182,25 @@ class LinkedListNodeTest < Test::Unit::TestCase
 
     assert_equal(5, initial.value)
     assert_equal(10, initial.next.value)
+  end
+end
+
+class LinkedListClassTest < Test::Unit::TestCase
+  def test_linked_list_properties
+  end
+
+  def test_linked_list_methods_existence
+  end
+
+  def test_linked_list_append_method
+  end
+
+  def test_linked_list_insert_method
+  end
+
+  def test_linked_list_delete_method
+  end
+
+  def test_linked_list_contains_method
   end
 end
