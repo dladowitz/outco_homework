@@ -24,6 +24,7 @@ var paths = {}
 addData('week1day2', 'recursion_1'); // adds week1day2
 addData('week1day3', 'sorting_1'); // adds week1day3
 addData('week2day1', 'dataStructures_1'); // adds week2day1
+addData('week2day2', 'dataStructures_2'); // adds week2day2
 
 
 // watcher
@@ -34,6 +35,8 @@ gulp.task('watch', function(){
   gulp.watch(paths.week1day3RB, ['week1day3RB']);
   gulp.watch(paths.week2day1JS, ['week2day1JS']);
   gulp.watch(paths.week2day1RB, ['week2day1RB']);
+  gulp.watch(paths.week2day2JS, ['week2day2JS']);
+  gulp.watch(paths.week2day2RB, ['week2day2RB']);
 })
 
 gulp.task('default', ['watch']);
