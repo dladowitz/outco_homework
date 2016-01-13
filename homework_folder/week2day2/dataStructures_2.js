@@ -51,127 +51,17 @@
   **/
 
 
-  var node = function(value){
-    this.value = value;
-    this.right = null;
-    this.left = null;
-  }
+var node = function(value){
+  this.value = value;
+  this.rightChild = null;
+  this.leftChild = null;
+}
 
 
-  var binarySearchTree = function(){
-    this.root = null;
-    this.size = 0;
-  }
-
-  binarySearchTree.prototype.insert = function(value){
-    if (this.root === null){
-      // when the tree is empty
-      this.root = new node(value);
-      this.size++;
-    } else {
-      // when stuff has already been inserted
-      var findAndInsert = function(currentNode){
-
-        if (value > currentNode.value){
-          if (currentNode.right === null){
-            currentNode.right = new node(value);
-          } else {
-            findAndInsert(currentNode.right);
-          }
-        } else if (value < currentNode.value){
-          if (currentNode.left === null){
-            currentNode.left = new node(value);
-          } else {
-            findAndInsert(currentNode.left);
-          }
-        }
-      }
-
-      findAndInsert(this.root);
-
-      this.size++;
-
-    }
-  }
-
-  binarySearchTree.prototype.search = function(target){
-    var check = false;
-
-    var traverse = function(currentNode){
-      if (check){
-        return;
-      } else if (currentNode === null){
-        return;
-      } else if (currentNode.value === target){
-        check = true;
-        return;
-      }
-
-      if (target > currentNode.value){
-        traverse(currentNode.right);
-      } else if (target < currentNode.value){
-        traverse(currentNode.left);
-      }
-    }
-
-    traverse(this.root);
-    return check;
-  }
-
-  binarySearchTree.prototype.delete = function(deleteValue){
-    var temp = [];
-
-    var roundUp = function(currentNode){
-      if (currentNode === null){
-        return;
-      } else {
-        if (currentNode.value !== deleteValue){
-          temp.push(currentNode.value);
-        }
-      }
-
-      roundUp(currentNode.right);
-      roundUp(currentNode.left);
-    }
-
-    roundUp(this.root);
-
-    if (temp.length === this.size){
-      console.log('deleteValue: ' + deleteValue + ' was not found in binary search tree');
-      return;
-    }
-
-    // create temporary tree
-    var tempTree = new binarySearchTree();
-
-    // iterate through all of the found values that weren't the target
-    // and insert them into the new tree
-    temp.forEach(function(value){
-      tempTree.insert(value);
-    })
-
-    // reinitialize the root as the tempTree root
-    this.root = tempTree.root;
-
-    // reduce size of tree
-    this.size--;
-    
-    console.log(deleteValue + ' has been deleted from the tree');
-  }
-
-  // var test = new binarySearchTree();
-
-  // test.insert(5);
-  // test.insert(3);
-  // test.insert(8);
-  // test.insert(1);
-  // test.insert(2);
-  // test.insert(4);
-  // test.insert(10);
-  // console.log(test.root);
-  // test.delete(3);
-  // console.log('*********');
-  // console.log(JSON.stringify(test.root));
+var binarySearchTree = function(){
+  this.root = null;
+  this.size = 0;
+}
 
 
 
@@ -216,16 +106,16 @@ describe('binary search tree node', function(){
       var leftTarget = new node(2);
 
       expect(initial).to.have.property('value');
-      expect(initial).to.have.property('right');
-      expect(initial).to.have.property('left');
-      expect(initial.right).to.equal(null);
-      expect(initial.left).to.equal(null);
+      expect(initial).to.have.property('rightChild');
+      expect(initial).to.have.property('leftChild');
+      expect(initial.rightChild).to.equal(null);
+      expect(initial.leftChild).to.equal(null);
 
-      initial.right = rightTarget;
-      initial.left = leftTarget;
+      initial.rightChild = rightTarget;
+      initial.leftChild = leftTarget;
 
-      expect(initial.right.value).to.equal(10);
-      expect(initial.left.value).to.equal(2);
+      expect(initial.rightChild.value).to.equal(10);
+      expect(initial.leftChild.value).to.equal(2);
 
     })
   })
@@ -264,8 +154,8 @@ describe('binary search tree class ', function(){
       test.insert(5);
 
       expect(test.root.value).to.equal(5);
-      expect(test.root.right).to.equal(null);
-      expect(test.root.left).to.equal(null);
+      expect(test.root.rightChild).to.equal(null);
+      expect(test.root.leftChild).to.equal(null);
       expect(test.size).to.equal(1);
     });
 
@@ -278,15 +168,15 @@ describe('binary search tree class ', function(){
       test.insert(5);
 
       expect(test.root.value).to.equal(5);
-      expect(test.root.right).to.equal(null);
-      expect(test.root.left).to.equal(null);
+      expect(test.root.rightChild).to.equal(null);
+      expect(test.root.leftChild).to.equal(null);
       expect(test.size).to.equal(1);
 
       test.insert(10);
 
       expect(test.root.value).to.equal(5);
-      expect(test.root.right.value).to.equal(10);
-      expect(test.root.left).to.equal(null);
+      expect(test.root.rightChild.value).to.equal(10);
+      expect(test.root.leftChild).to.equal(null);
       expect(test.size).to.equal(2);
     });
   });
