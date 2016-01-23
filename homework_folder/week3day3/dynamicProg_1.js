@@ -45,3 +45,79 @@
   **********************************************************************/
 
 
+var maxConsecutiveSum = function(input){
+
+};
+
+var coinChange = function(input){
+
+};
+
+
+
+
+////////////////////////////////////////////////////////////
+///////////////  DO NOT TOUCH TEST BELOW!!!  ///////////////
+////////////////////////////////////////////////////////////
+
+describe('maxConsecutiveSum FUNCTION ', function() {
+  
+  describe("RUN ON [6, -1, 3, 5, -10]: ", function () {
+    it("should return 13", function () {
+      var test = maxConsecutiveSum([6, -1, 3, 5, -10]);
+      var answer = 13
+
+      expect(test).to.eql(test);
+    });
+  });
+
+  describe("RUN ON [5]: ", function () {
+    it("should return 5", function () {
+      var test = maxConsecutiveSum([5]);
+      var answer = 5
+
+      expect(test).to.eql(test);
+    });
+  });
+
+  describe("RUN ON [−2, 1, −3, 4, −1, 2, 1, −5, 4]: ", function () {
+    it("should return 6 (sum of 4, −1, 2, 1)", function () {
+      var test = maxConsecutiveSum([−2, 1, −3, 4, −1, 2, 1, −5, 4]);
+      var answer = 6
+
+      expect(test).to.eql(test);
+    });
+  });  
+
+});
+
+describe('coinChange FUNCTION ', function() {
+  
+  describe("RUN ON 11: ", function () {
+    it("should return 4", function () {
+      var test = coinChange(11)
+      var answer = 4
+
+      expect(test).to.eql(test);
+    });
+  });
+
+  describe("RUN ON 100: ", function () {
+    it("should return 293", function () {
+      var test = coinChange(100)
+      var answer = 293
+
+      expect(test).to.eql(test);
+    });
+  });
+
+  describe("RUN ON 1000: ", function () {
+    it("should return 2103596", function () {
+      var test = coinChange(1000)
+      var answer = 2103596
+
+      expect(test).to.eql(test);
+    });
+  });
+
+});

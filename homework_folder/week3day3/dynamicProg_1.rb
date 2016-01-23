@@ -45,3 +45,76 @@
  #  **********************************************************************/
 
 
+def maxConsecutiveSum(input)
+
+end
+
+def coinChange(input)
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+# //////////////////////////////////////////////////////////
+# ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
+# //////////////////////////////////////////////////////////
+
+require 'test/unit'
+
+class MaxConsecutiveSumTest < Test::Unit::TestCase
+  def test_maxConsecutiveSum_should_handle_example_input
+    test = maxConsecutiveSum([6, -1, 3, 5, -10])
+    answer = 13
+
+    assert_equal(answer, test) 
+
+  end
+
+  def test_maxConsecutiveSum_should_handle_single_element_input
+    test = maxConsecutiveSum([5])
+    answer = 5
+
+    assert_equal(answer, test)
+  end
+
+  def test_maxConsecutiveSum_should_handle_larger_input
+    test = maxConsecutiveSum([−2, 1, −3, 4, −1, 2, 1, −5, 4])
+    answer = 6
+
+    assert_equal(answer, test)
+  end
+end
+
+
+class CoinChangeTest < Test::Unit::TestCase
+  def test_coinChange_should_handle_example_input
+    test = coinChange(11)
+    answer = 4
+
+    assert_equal(answer, test) 
+
+  end
+
+  def test_coinChange_should_handle_one_hundred
+    test = coinChange(100)
+    answer = 293
+
+    assert_equal(answer, test)
+  end
+
+  def test_coinChange_should_handle_one_thousand
+    test = coinChange(1000)
+    answer = 2103596
+
+    assert_equal(answer, test)
+  end
+end
