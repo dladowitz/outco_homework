@@ -26,3 +26,84 @@
   *************************************************************************/
 
 
+var latticePaths = function(n){
+  var run = function(n){
+    var work = [1];
+    while (work.length < n + 1){
+      var temp = 1;
+      for (var i = 1; i < work.length; i++){
+        temp = temp + work[i];
+        work[i] = temp;
+      }
+      work.push(2*temp);
+    }
+    return  work[work.length-1];
+  }
+
+  return run(n);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+///////////////  DO NOT TOUCH TEST BELOW!!!  ///////////////
+////////////////////////////////////////////////////////////
+
+var expect = require('chai').expect;
+
+describe('latticePaths function', function(){
+
+  describe('RUN ON n=2', function(){
+    it('should return 6', function(){
+      var test = latticePaths(2);
+      var answer = 6;
+      expect(test).to.equal(answer);
+    });
+  });
+
+  describe('RUN ON n=1', function(){
+    it('should return 2', function(){
+      var test = latticePaths(1);
+      var answer = 2;
+      expect(test).to.equal(answer);
+    });
+  });
+
+  describe('RUN ON n=3', function(){
+    it('should return 20', function(){
+      var test = latticePaths(3);
+      var answer = 20;
+      expect(test).to.equal(answer);
+    });
+  });
+
+  describe('LARGE CASE: RUN ON n=20', function(){
+    it('should return 137846528820', function(){
+      var test = latticePaths(20);
+      var answer = 137846528820;
+      expect(test).to.equal(answer);
+    });
+  });
+
+  describe('EDGE CASE: RUN ON n=0', function(){
+    it('should return 1', function(){
+      var test = latticePaths(0);
+      var answer = 1;
+      expect(test).to.equal(answer);
+    });
+  });
+
+});
+
+
+
