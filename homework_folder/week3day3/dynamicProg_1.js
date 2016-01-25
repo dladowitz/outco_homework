@@ -60,6 +60,8 @@ var coinChange = function(input){
 ///////////////  DO NOT TOUCH TEST BELOW!!!  ///////////////
 ////////////////////////////////////////////////////////////
 
+var expect = require('chai').expect;
+
 describe('maxConsecutiveSum FUNCTION ', function() {
   
   describe("RUN ON [6, -1, 3, 5, -10]: ", function () {
