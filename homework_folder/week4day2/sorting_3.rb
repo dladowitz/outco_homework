@@ -13,7 +13,7 @@
  #  *  Output: A sorted array                                            *
  #  *                                                                    *
  #  *  Example: input = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434]     *
- #  *           output = [0.1234 0.3434 0.565 0.656 0.665 0.897]         *
+ #  *           output = [0.1234, 0.3434, 0.565, 0.656, 0.665, 0.897]         *
  #  *                                                                    *
  #  *  What are the time and auxilliary space complexity?                *
  #  *                                                                    *
@@ -37,6 +37,90 @@
  #  *  What are the time and auxilliary space complexity?                *
  #  *                                                                    *
  #  **********************************************************************/
+
+
+def bucketSort(input)
+	# your work here
+end
+
+def kthSmallest(input)
+	# your work here  
+end
+
+
+
+
+
+# //////////////////////////////////////////////////////////
+# ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
+# //////////////////////////////////////////////////////////
+
+require 'test/unit'
+
+class BucketSortTest < Test::Unit::TestCase
+
+  def test_bucketSort_should_handle_example_case
+    test = bucketSort([0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434])
+    answer = [0.1234, 0.3434, 0.565, 0.656, 0.665, 0.897]
+
+    assert_equal(answer, test)
+  end
+
+  def test_bucketSort_should_handle_empty_case
+    test = bucketSort([])
+    answer = []
+
+    assert_equal(answer, test)
+  end
+
+  def test_bucketSort_should_handle_large_array
+
+    testInput = []
+    $i = 10000
+
+    while $i > 0
+      toPush = Random.rand(1000)
+      testInput.push(toPush)
+      $i = $i - 1
+    end
+
+
+    test = bucketSort(testInput)
+    answer = testInput.sort
+
+    assert_equal(answer, test)
+  end
+
+end
+
+class KthSmallestTest < Test::Unit::TestCase
+
+  def test_kthSmallest_should_handle_example_case
+    test = kthSmallest([1984, 1337, 9000, 8304, 5150, 9000, 8304], 5)
+    answer = 8304
+
+    assert_equal(answer, test)
+  end
+
+  def test_kthSmallest_should_handle_other_input
+    test = kthSmallest([7, 10, 4, 3, 20, 15], 3)
+    answer = 7
+
+    assert_equal(answer, test)
+  end
+
+  def test_kthSmallest_should_handle_other_input_with_new_k
+    test = kthSmallest([7, 10, 4, 3, 20, 15], 4)
+    answer = 10
+
+    assert_equal(answer, test)
+  end
+
+end
+
+
+
+
 
 
 
