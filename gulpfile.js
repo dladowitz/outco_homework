@@ -29,7 +29,8 @@ addData('week2day3', 'sorting_2'); // adds week2day3
 addData('week3day1', 'dataStructures_3'); // adds week3day1
 addData('week3day2', 'dataStructures_4'); // adds week3day2
 addData('week3day3', 'dynamicProg_1'); // adds week3day3
-addData('week4day1', 'recursion_2'); // adds week3day3
+addData('week4day1', 'recursion_2'); // adds week4day1
+addData('week4day2', 'sorting_1'); // adds week4day2
 
 
 // watcher
@@ -55,6 +56,8 @@ gulp.task('watch', function(){
 
   gulp.watch(paths.week4day1JS, ['week4day1JS']);
   gulp.watch(paths.week4day1RB, ['week4day1RB']);
+  gulp.watch(paths.week4day2JS, ['week4day2JS']);
+  gulp.watch(paths.week4day2RB, ['week4day2RB']);
 })
 
 gulp.task('default', ['watch']);
