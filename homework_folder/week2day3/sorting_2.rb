@@ -15,28 +15,21 @@
  #  *                                                                    *
  #  **********************************************************************/
 
-
-
-
-
-
-
- #  /**********************************************************
- #   *             Highly Recommended Extra Credit            *
- #   *                                                        *
- #   *  Problem: Bubble Sort                                  *
- #   *                                                        *
- #   *  Prompt: Given an unsorted array of numbers,           *
- #   *          return a sorted array using bubble sort.      *
- #   *                                                        *
- #   *  Input: An unsorted array                              *
- #   *  Output: A sorted array                                *
- #   *                                                        *
- #   *  Example: input = [8,3,2,10] output = [2,3,8,10]       *
- #   *                                                        *
- #   *  What are the time and auxilliary space complexity?    *
- #   *                                                        *
- #   **********************************************************/
+ # /********************************************************************** 
+ #  *                                                                    *
+ #  *  Problem: Mergesort                                                *
+ #  *                                                                    *
+ #  *  Prompt: Given an unsorted array of numbers,                       *
+ #  *          return a sorted array using Mergesort sort.               *
+ #  *                                                                    *
+ #  *  Input:  An unsorted array                                         *
+ #  *  Output: A sorted array                                            *
+ #  *                                                                    *
+ #  *  Example: input = [3,9,1,4,7] , output = [1,3,4,7,9]               *
+ #  *                                                                    *
+ #  *  What are the time and auxilliary space complexity?                *
+ #  *                                                                    *
+ #  **********************************************************************/
 
 
 def quickSort(input)
@@ -44,7 +37,7 @@ def quickSort(input)
 end
 
 
-def bubbleSort(input)
+def mergeSort(input)
   # your work here
 end
 
@@ -98,22 +91,22 @@ class QuickSortTest < Test::Unit::TestCase
 
 end
 
-class BubbleSortTest < Test::Unit::TestCase
-  def test_bubbleSort_should_handle_example_case
-    test = bubbleSort([8,3,2,10])
+class MergeSortTest < Test::Unit::TestCase
+  def test_mergeSort_should_handle_example_case
+    test = mergeSort([8,3,2,10])
     answer = [2,3,8,10]
 
     assert_equal(answer, test);
   end
 
-  def test_selectionSort_should_handle_empty_input
-    test = bubbleSort([])
+  def test_mergeSort_should_handle_empty_input
+    test = mergeSort([])
     answer = []
 
     assert_equal(answer, test);
   end
 
-  def test_selectionSort_should_handle_large_input
+  def test_mergeSort_should_handle_large_input
     testInput = []
     $i = 1000000
 
@@ -123,7 +116,7 @@ class BubbleSortTest < Test::Unit::TestCase
       $i = $i - 1
     end
     
-    test = bubbleSort(testInput)
+    test = mergeSort(testInput)
     assert_equal(testInput.sort, test)
   end
 
