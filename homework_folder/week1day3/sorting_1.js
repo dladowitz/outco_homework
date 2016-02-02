@@ -1,5 +1,4 @@
  /********************************************************************** 
-  *                          Homework III                              *
   *                                                                    *
   *  Problem: Insertion Sort                                           *
   *                                                                    *
@@ -15,14 +14,7 @@
   *                                                                    *
   **********************************************************************/
 
-
-
-
-
-
-
   /**********************************************************
-   *             Highly Recommended Extra Credit            *
    *                                                        *
    *  Problem: Selection Sort                               *
    *                                                        *
@@ -39,12 +31,33 @@
    *                                                        *
    **********************************************************/
 
+   /**********************************************************
+    *                                                        *
+    *  Problem: Bubble Sort                                  *
+    *                                                        *
+    *  Prompt: Given an unsorted array of numbers,           *
+    *          return a sorted array using bubble sort.      *
+    *                                                        *
+    *  Input: An unsorted array                              *
+    *  Output: A sorted array                                *
+    *                                                        *
+    *  Example: input = [8,3,2,10] output = [2,3,8,10]       *
+    *                                                        *
+    *  What are the time and auxilliary space complexity?    *
+    *                                                        *
+    **********************************************************/
+
 var insertionSort = function(input){
   // your work here
 }
 
 
 var selectionSort = function(input){
+  // your work here
+}
+
+
+var bubbleSort = function(input){
   // your work here
 }
 
@@ -134,6 +147,41 @@ describe('SELECTION SORT ', function(){
         testInput.push(Math.floor(Math.random() * 1000000))
       }
       var test = selectionSort(testInput);
+
+      expect(testInput.sort(function(a, b){return a-b})).to.eql(test);
+    })
+  })
+
+});
+
+describe('BUBBLE SORT ', function(){
+
+  describe("RUN ON [8, 3, 2, 10]: ", function(){
+    it("should return [2, 3, 8, 10]", function(){
+      var test = bubbleSort([8,3,2,10]);
+      var answer = [2,3,8,10];
+
+      expect(test).to.eql(answer);
+    });
+  });
+
+  describe("RUN ON EMPTY INPUT []: ", function(){
+    it("should return []", function(){
+      var test = bubbleSort([]);
+      var answer = [];
+
+      expect(test).to.eql(answer);
+    });
+  });
+
+  describe("RUN ON LARGE INPUT: ", function(){
+    it("should complete", function(){
+      var testInput = [];
+      var i = 1000000;
+      while (i--){
+        testInput.push(Math.floor(Math.random() * 1000000))
+      }
+      var test = bubbleSort(testInput);
 
       expect(testInput.sort(function(a, b){return a-b})).to.eql(test);
     })

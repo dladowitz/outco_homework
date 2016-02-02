@@ -15,14 +15,7 @@
  #  *                                                                    *
  #  **********************************************************************/
 
-
-
-
-
-
-
  #  /**********************************************************
- #   *             Highly Recommended Extra Credit            *
  #   *                                                        *
  #   *  Problem: Selection Sort                               *
  #   *                                                        *
@@ -39,6 +32,22 @@
  #   *                                                        *
  #   **********************************************************/
 
+ #  /**********************************************************
+ #   *                                                        *
+ #   *  Problem: Bubble Sort                                  *
+ #   *                                                        *
+ #   *  Prompt: Given an unsorted array of numbers,           *
+ #   *          return a sorted array using bubble sort.      *
+ #   *                                                        *
+ #   *  Input: An unsorted array                              *
+ #   *  Output: A sorted array                                *
+ #   *                                                        *
+ #   *  Example: input = [8,3,2,10] output = [2,3,8,10]       *
+ #   *                                                        *
+ #   *  What are the time and auxilliary space complexity?    *
+ #   *                                                        *
+ #   **********************************************************/
+
 
 def insertionSort(input)
   # your work here
@@ -46,6 +55,10 @@ end
 
 
 def selectionSort(input)
+  # your work here
+end
+
+def bubbleSort(input)
   # your work here
 end
 
@@ -145,6 +158,37 @@ class SelectionSortTest < Test::Unit::TestCase
     end
     
     test = selectionSort(testInput)
+    assert_equal(testInput.sort, test)
+  end
+
+end
+
+class BubbleSortTest < Test::Unit::TestCase
+  def test_bubbleSort_should_handle_example_case
+    test = bubbleSort([8,3,2,10])
+    answer = [2,3,8,10]
+
+    assert_equal(answer, test);
+  end
+
+  def test_bubbleSort_should_handle_empty_input
+    test = bubbleSort([])
+    answer = []
+
+    assert_equal(answer, test);
+  end
+
+  def test_bubbleSort_should_handle_large_input
+    testInput = []
+    $i = 1000000
+
+    while $i > 0
+      toPush = Random.rand(1000000)
+      testInput.push(toPush)
+      $i = $i - 1
+    end
+    
+    test = bubbleSort(testInput)
     assert_equal(testInput.sort, test)
   end
 
