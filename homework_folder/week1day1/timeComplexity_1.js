@@ -76,17 +76,32 @@ function printUnorderedPairs(array) {
  **/
 
 function sortedArraySearch(sortedArray, target) {
-  var mid = Math.floor(sortedArray.length / 2);
-  
-  if (sortedArray[mid] === target) {
-    return sortedArray[mid];
-  } else if (sortedArray[mid] < target && sortedArray.length > 1) {
-    return sortedArraySearch(sortedArray.splice(mid, Number.MAX_VALUE), target);
-  } else if (sortedArray[mid] > target && sortedArray.length > 1) {
-    return sortedArraySearch(sortedArray.splice(0, mid), target);
-  } else {
-    return -1;
-  }   
+
+  var result = false;
+
+  var hunt = function(start, end){
+    if (start >= end-1 && (sortedArray[start] === target || sortedArray[end] === target)){
+      result = true;
+      return;
+    } else if (start >= end-1){
+      return;
+    }
+
+    var mid = Math.floor((start + end) / 2);
+
+    if (sortedArray[mid] === target){
+      result = true;
+      return;
+    } else if (target > sortedArray[mid]){
+      hunt(mid, end);
+    } else if (target < sortedArray[mid]){
+      hunt(start, mid);
+    }
+
+  }
+
+  hunt(0, sortedArray.length-1);
+  return result;
 };
 
 /**
