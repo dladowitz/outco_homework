@@ -210,9 +210,9 @@ class LinkedListClassTest < Test::Unit::TestCase
     test.append(5)
     test.append(10)
     test.append(15)
-    test.delete(1)
+    test.delete(0)
 
-    assert_equal(5, test.head.value)
+    assert_equal(10, test.head.value)
     assert_equal(15, test.tail.value)
     assert_equal(15, test.head.next.value)
     assert_equal(2, test.listLength)
