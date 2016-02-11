@@ -29,7 +29,7 @@
  #  *                  insert: function that takes in two values, one to be inserted *
  #  *                          and one to search.  It searches the list for the      *
  #  *                          search value, and if found, adds a new node with the  *
- #  *                          insert value before the node with the search value.   *
+ #  *                          insert value after the node with the search value.    *
  #  *                                                                                *
  #  *                  delete: function that removes a node at a specified location, *
  #  *                          with a default action of deleting the head            *
@@ -80,7 +80,7 @@ class Linked_List
   def insert(insertVal, searchVal)
   end
 
-  def delete(val)
+  def delete(location)
   end
 
   def contains(val)
