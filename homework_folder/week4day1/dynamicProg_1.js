@@ -20,38 +20,38 @@
   **********************************************************************/
 
  /**********************************************************************
-  *  Problem 2: Coin Change                                            *
-  *                                                                    *
-  *  Prompt: US Currency has coins in circulation with the             *
-  *          following value in cents: [1, 5, 10, 25, 50, 100]         *
-  *                                                                    *
-  *          Given a value, find how many unique ways to make change   *
-  *          given the coin values in circulation.                     *
-  *                                                                    *
-  *  Input:  An integer N (value from which to make change)            *
-  *  Output: An integer (number of unique ways to make change)         *
-  *                                                                    *
-  *  Time Complexity: O(nm)                                            *
-  *  Auxiliary Space Complexity: O(n)                                  *
-  *                                                                    *
-  *  Example: input = 11                                               *
-  *           output = 4 ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],           *
-  *                       [5, 1, 1, 1, 1, 1, 1],                       *
-  *                       [5, 5, 1],                                   *
-  *                       [10, 1])                                     *
-  *                                                                    *
-  *  Hint: www.geeksforgeeks.org/dynamic-programming-set-7-coin-change *
+  *  Problem: Lattice Paths (Dynamic Programming Approach)                *
+  *                                                                       *
+  *  Prompt: Count the number of unique paths to travel from the top left *
+  *          to the bottom right of a lattice of squares.                 *
+  *                                                                       *
+  *  Input:  An interger N (which is the size of the lattice)             *
+  *  Output: An interger (which represents the number of unique paths)    *
+  *                                                                       *
+  *  Example: N = 2 (2x2 board) => 6 (number of unique paths)             *
+  *                                                                       *
+  *  What is the time and auxilliary space complexity of your solution?   *
+  *                                                                       *
+  *  Note: When moving through the lattice, you can only move either down *
+  *        or to the left.                                                *
+  *                                                                       *
+  *        You did this problem before with recursion. Try implementing   *
+  *        it now with dynamic programming!                               *
+  *                                                                       *
+  *  Additional Resources:                                                *
+  *    1: https://projecteuler.net/problem=15                             *
+  *    2: https://en.wikipedia.org/wiki/Lattice_path 
   *                                                                    *
   **********************************************************************/
 
 
 var maxConsecutiveSum = function(input){
-
+  // your work here
 };
 
-var coinChange = function(input){
-
-};
+var latticePaths = function(n){
+  // your work here
+}
 
 
 
@@ -93,33 +93,49 @@ describe('maxConsecutiveSum FUNCTION ', function() {
 
 });
 
-describe('coinChange FUNCTION ', function() {
-  
-  describe("RUN ON 11: ", function () {
-    it("should return 4", function () {
-      var test = coinChange(11)
-      var answer = 4
+describe('latticePaths function', function(){
 
-      expect(test).to.eql(test);
+  describe('RUN ON n=2', function(){
+    it('should return 6', function(){
+      var test = latticePaths(2);
+      var answer = 6;
+      expect(test).to.equal(answer);
     });
   });
 
-  describe("RUN ON 100: ", function () {
-    it("should return 293", function () {
-      var test = coinChange(100)
-      var answer = 293
-
-      expect(test).to.eql(test);
+  describe('RUN ON n=1', function(){
+    it('should return 2', function(){
+      var test = latticePaths(1);
+      var answer = 2;
+      expect(test).to.equal(answer);
     });
   });
 
-  describe("RUN ON 1000: ", function () {
-    it("should return 2103596", function () {
-      var test = coinChange(1000)
-      var answer = 2103596
+  describe('RUN ON n=3', function(){
+    it('should return 20', function(){
+      var test = latticePaths(3);
+      var answer = 20;
+      expect(test).to.equal(answer);
+    });
+  });
 
-      expect(test).to.eql(test);
+  describe('LARGE CASE: RUN ON n=20', function(){
+    it('should return 137846528820', function(){
+      var test = latticePaths(20);
+      var answer = 137846528820;
+      expect(test).to.equal(answer);
+    });
+  });
+
+  describe('EDGE CASE: RUN ON n=0', function(){
+    it('should return 1', function(){
+      var test = latticePaths(0);
+      var answer = 1;
+      expect(test).to.equal(answer);
     });
   });
 
 });
+
+
+

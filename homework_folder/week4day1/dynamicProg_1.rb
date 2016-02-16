@@ -19,38 +19,38 @@
  #  *                                                                    *
  #  **********************************************************************/
 
- # /**********************************************************************
- #  *  Problem 2: Coin Change                                            *
- #  *                                                                    *
- #  *  Prompt: US Currency has coins in circulation with the             *
- #  *          following value in cents: [1, 5, 10, 25, 50, 100]         *
- #  *                                                                    *
- #  *          Given a value, find how many unique ways to make change   *
- #  *          given the coin values in circulation.                     *
- #  *                                                                    *
- #  *  Input:  An integer N (value from which to make change)            *
- #  *  Output: An integer (number of unique ways to make change)         *
- #  *                                                                    *
- #  *  Time Complexity: O(nm)                                            *
- #  *  Auxiliary Space Complexity: O(n)                                  *
- #  *                                                                    *
- #  *  Example: input = 11                                               *
- #  *           output = 4 ([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],           *
- #  *                       [5, 1, 1, 1, 1, 1, 1],                       *
- #  *                       [5, 5, 1],                                   *
- #  *                       [10, 1])                                     *
- #  *                                                                    *
- #  *  Hint: www.geeksforgeeks.org/dynamic-programming-set-7-coin-change *
- #  *                                                                    *
- #  **********************************************************************/
-
+ # /*************************************************************************
+ #  *                                                                       *
+ #  *  Problem: Lattice Paths (Dynamic Programming Approach)                *
+ #  *                                                                       *
+ #  *  Prompt: Count the number of unique paths to travel from the top left *
+ #  *          to the bottom right of a lattice of squares.                 *
+ #  *                                                                       *
+ #  *  Input:  An interger N (which is the size of the lattice)             *
+ #  *  Output: An interger (which represents the number of unique paths)    *
+ #  *                                                                       *
+ #  *  Example: N = 2 (2x2 board) => 6 (number of unique paths)             *
+ #  *                                                                       *
+ #  *  What is the time and auxilliary space complexity of your solution?   *
+ #  *                                                                       *
+ #  *  Note: When moving through the lattice, you can only move either down *
+ #  *        or to the left.                                                *
+ #  *                                                                       *
+ #  *        You did this problem before with recursion. Try implementing   *
+ #  *        it now with dynamic programming!                               *
+ #  *                                                                       *
+ #  *  Additional Resources:                                                *
+ #  *    1: https://projecteuler.net/problem=15                             *
+ #  *    2: https://en.wikipedia.org/wiki/Lattice_path                      *
+ #  *                                                                       *
+ #  *************************************************************************/
 
 def maxConsecutiveSum(input)
 
 end
 
-def coinChange(input)
-
+def latticePaths(n)
+  
 end
 
 
@@ -95,26 +95,47 @@ class MaxConsecutiveSumTest < Test::Unit::TestCase
 end
 
 
-class CoinChangeTest < Test::Unit::TestCase
-  def test_coinChange_should_handle_example_input
-    test = coinChange(11)
-    answer = 4
+class LatticePathsTest < Test::Unit::TestCase
 
-    assert_equal(answer, test) 
-
-  end
-
-  def test_coinChange_should_handle_one_hundred
-    test = coinChange(100)
-    answer = 293
+  def test_small_lattice_2
+    puts ': input 2 should expect 6'
+    test = latticePaths(2)
+    answer = 6
 
     assert_equal(answer, test)
   end
 
-  def test_coinChange_should_handle_one_thousand
-    test = coinChange(1000)
-    answer = 2103596
+  def test_small_lattice_1
+    puts ': input 1 should expect 2'
+    test = latticePaths(1)
+    answer = 2
 
     assert_equal(answer, test)
   end
+
+  def test_small_lattice_3
+    puts ': input 3 should expect 20'
+    test = latticePaths(3)
+    answer = 20
+
+    assert_equal(answer, test)
+  end
+
+  def test_large_lattice_20
+    puts ': input 20 should expect 137846528820'
+    test = latticePaths(20)
+    answer = 137846528820
+
+    assert_equal(answer, test)
+  end
+
+  def test_edge_case_lattice_0
+    puts ': input 0 should expect 1'
+    test = latticePaths(0)
+    answer = 1
+
+    assert_equal(answer, test)
+  end  
+
 end
+
