@@ -1,7 +1,27 @@
+ # /********************************************************************** 
+ #  *                           Homework X                               *
+ #  **********************************************************************/
+
+ # /********************************************************************** 
+ #  *  Problem 1: Max Consecutive Sum                                    *
+ #  *                                                                    *
+ #  *  Prompt: Given an array of integers find the sum of consecutive    *
+ #  *          values in the array that produces the maximum value.      *
+ #  *                                                                    *
+ #  *  Input:  Unsorted array of positive and negative integers          *
+ #  *  Output: Integer (max consecutive sum)                             *
+ #  *                                                                    *
+ #  *  Time Complexity: O(n)                                             *
+ #  *  Auxiliary Space Complexity: O(1)                                  *
+ #  *                                                                    *
+ #  *  Example: input = [6, -1, 3, 5, -10]                               *
+ #  *           output = 13 (6 + -1 + 3 + 5 = 13)                        *
+ #  *                                                                    *
+ #  **********************************************************************/
+
  # /*************************************************************************
- #  *                          Homework VIII                                *
  #  *                                                                       *
- #  *  Problem: Lattice Paths                                               *
+ #  *  Problem: Lattice Paths (Dynamic Programming Approach)                *
  #  *                                                                       *
  #  *  Prompt: Count the number of unique paths to travel from the top left *
  #  *          to the bottom right of a lattice of squares.                 *
@@ -16,8 +36,8 @@
  #  *  Note: When moving through the lattice, you can only move either down *
  #  *        or to the left.                                                *
  #  *                                                                       *
- #  *        Try implementing your solution using side effects recursion or *
- #  *        pure recursion.                                                *
+ #  *        You did this problem before with recursion. Try implementing   *
+ #  *        it now with dynamic programming!                               *
  #  *                                                                       *
  #  *  Additional Resources:                                                *
  #  *    1: https://projecteuler.net/problem=15                             *
@@ -25,10 +45,15 @@
  #  *                                                                       *
  #  *************************************************************************/
 
+def maxConsecutiveSum(input)
+
+end
 
 def latticePaths(n)
   
 end
+
+
 
 
 
@@ -44,6 +69,31 @@ end
 # //////////////////////////////////////////////////////////
 
 require 'test/unit'
+
+class MaxConsecutiveSumTest < Test::Unit::TestCase
+  def test_maxConsecutiveSum_should_handle_example_input
+    test = maxConsecutiveSum([6, -1, 3, 5, -10])
+    answer = 13
+
+    assert_equal(answer, test) 
+
+  end
+
+  def test_maxConsecutiveSum_should_handle_single_element_input
+    test = maxConsecutiveSum([5])
+    answer = 5
+
+    assert_equal(answer, test)
+  end
+
+  def test_maxConsecutiveSum_should_handle_larger_input
+    test = maxConsecutiveSum([−2, 1, −3, 4, −1, 2, 1, −5, 4])
+    answer = 6
+
+    assert_equal(answer, test)
+  end
+end
+
 
 class LatticePathsTest < Test::Unit::TestCase
 
@@ -88,10 +138,4 @@ class LatticePathsTest < Test::Unit::TestCase
   end  
 
 end
-
-
-
-
-
-
 
