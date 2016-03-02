@@ -47,7 +47,12 @@ npm install
 
 We have tests set up for your homework assignments. To run 
 them, simply run `gulp` in the root directory of the 
-homework repository.
+homework repository. If you do not have gulp installed, 
+do so globally with: 
+
+```
+npm install -g gulp
+```
 
 Navigate into the current day's homework folder and begin coding 
 in your respective file (Ruby or JavaScript). Whenever you 
