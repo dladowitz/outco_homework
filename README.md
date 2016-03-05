@@ -43,6 +43,14 @@ command:
 npm install
 ```
 
+* RUBY USERS: In case you have never installed the ruby 
+unit/test gem, or if you're unsure as to whether you have 
+the gem installed, run the following command to ensure that 
+you have the unit/test gem: 
+```
+sudo gem install test-unit
+```
+
 ### Coding and Testing
 
 We have tests set up for your homework assignments. To run 
@@ -74,15 +82,16 @@ For JavaScript, the same homework assignment would be:
 gulp week1day3JS
 ```
 
-### Pulling new problems
+### Rebasing
 
-At the end of each class, the homework problems for the 
-following class will be released. 
+All of the problems for the entire course are already in 
+this repo. There will be no need to rebase in additional 
+problems. For a read on what rebase is, and why to use it 
+instead of merge, please check out this [article](http://vokoshyv.com/git-workflow-with-rebase/). 
 
-* In order to pull the new problems to your machine, first 
-make sure that all of your work on the repository has been 
-added and committed. Then go to the the root directory of 
-your homework repository and run the following command: 
+* Occasionally, bugs pop up in the homework files, and upon
+fixing them, we will need you to rebase off of the OutcoSF 
+organization. To do so, run the following command: 
 ``` 
 git pull --rebase upstream master
 ```
