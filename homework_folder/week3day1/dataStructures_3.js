@@ -233,8 +233,8 @@ describe('hash table class ', function(){
       test.delete('hello');
 
       expect(test.size).to.equal(0);
-      expect(test.storage[1][0][0]).to.equal(undefined);
-      expect(test.storage[1][0][1]).to.equal(undefined);
+      expect(test.storage[1][0]).to.equal(undefined);
+      expect(test.storage[1][0]).to.equal(undefined);
 
     });
 
