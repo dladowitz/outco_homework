@@ -261,7 +261,7 @@ describe('graph class', function(){
       expect(result).to.include('blah');
     })
 
-    is("should return an empty array when there's no edges", function(){
+    it("should return an empty array when there's no edges", function(){
       var test = new Graph();
 
       test.addVertex('hello');
