@@ -30,7 +30,7 @@ addData('week3day1', 'dataStructures_3'); // adds week3day1
 addData('week3day2', 'dataStructures_4'); // adds week3day2
 addData('week3day3', 'recursion_2'); // adds week3day3
 addData('week4day1', 'dynamicProg_1'); // adds week4day1
-addData('week4day2', 'sorting_1'); // adds week4day2
+addData('week4day2', 'sorting_3'); // adds week4day2
 
 
 // watcher
