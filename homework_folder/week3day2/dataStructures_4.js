@@ -37,7 +37,7 @@
   *          findNeighbors: Method that accepts an id as its input, and returns    *
   *                         all of the edges of that vertex.                       *
   *                                                                                *
-  *          forEachNode: Method that accepts an operation, and performs that      *
+  *          forEachVertex: Method that accepts an operation, and performs that      *
   *                       operation on each vertex in the Graph.                   *
   *                                                                                *
   *  Input:  N/A                                                                   *
