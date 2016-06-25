@@ -6,11 +6,11 @@
  **/
 
 
-/**
- * Problem 1:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
- **/
+ /**
+  * Problem 1:
+  *  Time Complexity: O(1) - Constant Time: 2
+  *  Auxiliary Space Complexity: O(1) - Constant Space: 1
+  **//
 
 function firstTimesLast(array) {
   var result = null;
@@ -23,17 +23,18 @@ function firstTimesLast(array) {
   }
 };
 
+
 /**
  * Problem 2:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
+ *  Time Complexity: O(n) - Linear Time: 2n + 2 + 26
+ *  Auxiliary Space Complexity: Linear Space: n + 26 +  4
  **/
 
 function mostFrequentOccurrence(string) {
   var lowerString = string.toLowerCase();
   var letters = {};
   var mostFrequent = [];
-  
+
   for(var i = 0; i < lowerString.length; i++) {
     if (letters[lowerString[i]]) {
       letters[lowerString[i]] ++;
@@ -57,8 +58,8 @@ function mostFrequentOccurrence(string) {
 
 /**
  * Problem 3:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
+ *  Time Complexity: O(n^2) - Quadratic Time: 3 * n^2
+ *  Auxiliary Space Complexity: O(1) - Constant Space: 2
  **/
 
 function printUnorderedPairs(array) {
@@ -71,8 +72,8 @@ function printUnorderedPairs(array) {
 
 /**
  * Problem 4:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
+ *  Time Complexity: O(log(n)) - Logarithic Time 
+ *  Auxiliary Space Complexity: O(log(n)) - Logarithic Space
  **/
 
 function sortedArraySearch(sortedArray, target) {
@@ -106,9 +107,9 @@ function sortedArraySearch(sortedArray, target) {
 
 /**
  * Problem 5:
- *  Time Complexity: 
- *  Auxiliary Space Complexity: 
- **/
+ *  Time Complexity: O(n * m) - Not sure what this is called: (n * m) + 3 - This is an example of mutlivariate
+ *  Auxiliary Space Complexity: O(n * m) - Not sure what this is called: (n * m) + 3 - This is an example of mutlivariate
+ **//
 
 function makeCombinedMatrix(arrayOne, arrayTwo) {
   var result = [];
