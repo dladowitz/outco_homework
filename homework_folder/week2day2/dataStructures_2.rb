@@ -88,8 +88,22 @@ class Binary_Search_Tree
   def contains
   end
 
-  def delete
+  def delete(val)
+    queue = Queue.new
+    queue.enq(@root)
 
+    while queue.size > 0
+      current_node = queue.deq
+      if current_node.leftChild && current_node.leftChild.val == val
+        current_node.leftChild = nil
+      elsif current_node.rightChild && current_node.rightChild.val == val
+        current_node.rightChild = nil
+      end
+      queue.enq(current_node.leftChild) if current_node.leftChild
+      queue.enq(current_node.rightChild) if current_node.rightChild
+    end
+
+    return false
   end
 
   def search(val)
@@ -104,6 +118,8 @@ class Binary_Search_Tree
       queue.enq(current_node.leftChild) if current_node.leftChild
       queue.enq(current_node.rightChild) if current_node.rightChild
     end
+
+    return false
   end
 end
 
@@ -184,28 +200,28 @@ class BinarySearchTreeClassTest < Test::Unit::TestCase
 
     assert_equal(true, test.search(10))
   end
-#
-#   def test_Binary_Search_Tree_search_method_node_does_not_exist
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#     test.insert(10)
-#     test.insert(2)
-#
-#     assert_equal(false, test.search(7))
-#   end
-#
-#   def test_Binary_Search_Tree_delete_method_removes_node
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#     test.insert(10)
-#     test.insert(2)
-#
-#     assert_equal(true, test.search(10))
-#
-#     test.delete(10)
-#
-#     assert_equal(false, test.search(10))
-#   end
+
+  def test_Binary_Search_Tree_search_method_node_does_not_exist
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+    test.insert(10)
+    test.insert(2)
+
+    assert_equal(false, test.search(7))
+  end
+
+  def test_Binary_Search_Tree_delete_method_removes_node
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+    test.insert(10)
+    test.insert(2)
+
+    assert_equal(true, test.search(10))
+
+    test.delete(10)
+
+    assert_equal(false, test.search(10))
+  end
 #
 #   def test_Binary_Search_Tree_delete_method_removes_node
 #     test = Binary_Search_Tree.new()
