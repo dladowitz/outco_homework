@@ -65,28 +65,47 @@ class Node
 end
 
 class Binary_Search_Tree
+  attr_reader :root, :size
 
+  def initialize
+    @root = nil
+    @size = 0
+  end
+
+  def insert(val)
+    unless @root
+      @root = Node.new(5)
+      return
+    end
+
+    if val < @root.val
+      @root.leftChild = Node.new(val)
+    else
+      @root.rightChild = Node.new(val)
+    end
+  end
+
+  def contains
+  end
+
+  def delete
+
+  end
+
+  def search(val)
+    queue = Queue.new
+    queue.enq(@root)
+
+    while queue.size > 0
+      current_node = queue.deq
+      if current_node.val == val
+        return true
+      end
+      queue.enq(current_node.leftChild) if current_node.leftChild
+      queue.enq(current_node.rightChild) if current_node.rightChild
+    end
+  end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # //////////////////////////////////////////////////////////
@@ -121,50 +140,50 @@ class BinarySearchTreeNodeTest < Test::Unit::TestCase
 
   end
 end
-#
-# class BinarySearchTreeClassTest < Test::Unit::TestCase
-#   def test_Binary_Search_Tree_properties_existence
-#     test = Binary_Search_Tree.new()
-#
-#     assert_respond_to(test, :root)
-#     assert_respond_to(test, :size)
-#
-#   end
-#
-#   def test_Binary_Search_Tree_methods_existence
-#     test = Binary_Search_Tree.new()
-#
-#     assert_respond_to(test, :insert)
-#     assert_respond_to(test, :contains)
-#     assert_respond_to(test, :delete)
-#   end
-#
-#   def test_Binary_Search_Tree_insert_method_single_node
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#
-#     assert_equal(5, test.root.val)
-#   end
-#
-#   def test_Binary_Search_Tree_insert_method_three_nodes
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#     test.insert(10)
-#     test.insert(2)
-#
-#     assert_equal(5, test.root.val)
-#     assert_equal(10, test.root.rightChild.val)
-#     assert_equal(2, test.root.leftChild.val)
-#   end
-#
-#   def test_Binary_Search_Tree_search_method_node_exists
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#     test.insert(10)
-#     test.insert(2)
-#
-#     assert_equal(true, test.search(10))
-#   end
+
+class BinarySearchTreeClassTest < Test::Unit::TestCase
+  def test_Binary_Search_Tree_properties_existence
+    test = Binary_Search_Tree.new()
+
+    assert_respond_to(test, :root)
+    assert_respond_to(test, :size)
+
+  end
+
+  def test_Binary_Search_Tree_methods_existence
+    test = Binary_Search_Tree.new()
+
+    assert_respond_to(test, :insert)
+    assert_respond_to(test, :contains)
+    assert_respond_to(test, :delete)
+  end
+
+  def test_Binary_Search_Tree_insert_method_single_node
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+
+    assert_equal(5, test.root.val)
+  end
+
+  def test_Binary_Search_Tree_insert_method_three_nodes
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+    test.insert(10)
+    test.insert(2)
+
+    assert_equal(5, test.root.val)
+    assert_equal(10, test.root.rightChild.val)
+    assert_equal(2, test.root.leftChild.val)
+  end
+
+  def test_Binary_Search_Tree_search_method_node_exists
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+    test.insert(10)
+    test.insert(2)
+
+    assert_equal(true, test.search(10))
+  end
 #
 #   def test_Binary_Search_Tree_search_method_node_does_not_exist
 #     test = Binary_Search_Tree.new()
@@ -200,4 +219,4 @@ end
 #
 #     assert_equal(2, test.size)
   # end
-# end
+end
