@@ -51,15 +51,11 @@
 
 def insertionSort(input)
   input.each_with_index do |element, index|
-    puts "Index: #{index}"
     unless index == input.length - 1
       subarray_index = index_of_subarray_min(index + 1, input)
-      puts "Subarray Index: #{subarray_index}"
 
-      if element > subarray_index
-        puts "Input before swap: #{input}"
+      if element > input[subarray_index]
         input = swap(index, subarray_index, input)
-        puts "Input after swap: #{input}"
       end
     end
   end
@@ -78,6 +74,7 @@ def index_of_subarray_min(start, array)
   index = start
   min = array[start]
   min_index = index
+
   array[start..array.length-1].each do |element|
     if element < min
       min = element
@@ -97,37 +94,6 @@ end
 def bubbleSort(input)
   # your work here
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -152,22 +118,22 @@ class InsertionSortTest < Test::Unit::TestCase
     assert_equal(answer, test);
   end
 
-  # def test_insertionSort_should_handle_large_input
-  #   testInput = []
-  #   $i = 1000000
-  #
-  #   while $i > 0
-  #     toPush = Random.rand(1000000)
-  #     testInput.push(toPush)
-  #     $i = $i - 1
-  #   end
-  #
-  #   test = insertionSort(testInput)
-  #   assert_equal(testInput.sort, test)
-  # end
+  def test_insertionSort_should_handle_large_input
+    testInput = []
+    $i = 10000
+
+    while $i > 0
+      toPush = Random.rand(10000)
+      testInput.push(toPush)
+      $i = $i - 1
+    end
+
+    test = insertionSort(testInput)
+    assert_equal(testInput.sort, test)
+  end
 
 end
-
+#
 # class SelectionSortTest < Test::Unit::TestCase
 #   def test_selectionSort_should_handle_example_case
 #     test = selectionSort([8,3,2,10])
