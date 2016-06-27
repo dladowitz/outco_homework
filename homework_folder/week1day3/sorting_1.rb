@@ -64,19 +64,42 @@ def insertionSort(input)
 end
 
 
-
 def selectionSort(input)
   input.each_with_index do |element, index|
     input = insert_and_shuffle(element, index, input)
   end
 end
 
-def bubbleSort(input)
-  # your work here
+
+def bubbleSort(array)
+  debug = false
+  end_marker = 0
+  swapped = true
+  while swapped
+    swapped = false
+    array[0..(array.length-1 - end_marker)].each_with_index do |element, index|
+      puts "End Marker: #{end_marker}" if debug
+      puts "Elem: #{array[index]}, index: #{index}"  if debug
+      if array[index + 1] && array[index] > array[index + 1]
+        puts "Swapping #{element} with #{array[index + 1]}" if debug
+        puts "Before Swap: #{array}"  if debug
+        temp = array[index]
+        array[index] = array[index + 1]
+        array[index + 1] = temp
+        puts "After Swap: #{array}" if debug
+        swapped = true
+        puts "Setting Swapped to: #{swapped}" if debug
+      end
+      puts "At bottom of each loop: Elem: #{element}, index: #{index}" if debug
+    end
+    end_marker += 1
+    puts "At bottom of While loop Swapped: #{swapped}" if debug
+  end
+
+  return array
 end
-
 private
-
+#
 def swap(first_index, second_index, array)
   temp = array[first_index]
   array[first_index] = array[second_index]
@@ -101,16 +124,17 @@ def index_of_subarray_min(start, array)
 end
 
 def insert_and_shuffle(element, index, array)
+  debug = false
   key = element
-  # puts "Key: #{key}"
-  # puts "Array to Shuffle: #{array}"
+  puts "Key: #{key}" if debug
+  puts "Array to Shuffle: #{array}" if debug
   while index >= 0
-    # puts "Index: #{index}"
+    puts "Index: #{index}" if debug
     if index == 0
       array[index] = key
     elsif key < array[index - 1]
       array[index] = array[index -1]
-      # p array
+      p array if debug
     else
       array[index] = key
       break
@@ -118,7 +142,7 @@ def insert_and_shuffle(element, index, array)
 
     index -= 1
   end
-  # p array
+  p array if debug
   return array
 end
 
@@ -174,49 +198,49 @@ class SelectionSortTest < Test::Unit::TestCase
     assert_equal(answer, test);
   end
 
-  def test_selectionSort_should_handle_large_input
-    testInput = []
-    $i = 10000
-
-    while $i > 0
-      toPush = Random.rand(10000)
-      testInput.push(toPush)
-      $i = $i - 1
-    end
-
-    test = selectionSort(testInput)
-    assert_equal(testInput.sort, test)
-  end
+  # def test_selectionSort_should_handle_large_input
+  #   testInput = []
+  #   $i = 10000
+  #
+  #   while $i > 0
+  #     toPush = Random.rand(10000)
+  #     testInput.push(toPush)
+  #     $i = $i - 1
+  #   end
+  #
+  #   test = selectionSort(testInput)
+  #   assert_equal(testInput.sort, test)
+  # end
 
 end
 
-# class BubbleSortTest < Test::Unit::TestCase
-#   def test_bubbleSort_should_handle_example_case
-#     test = bubbleSort([8,3,2,10])
-#     answer = [2,3,8,10]
-#
-#     assert_equal(answer, test);
-#   end
-#
-#   def test_bubbleSort_should_handle_empty_input
-#     test = bubbleSort([])
-#     answer = []
-#
-#     assert_equal(answer, test);
-#   end
-#
-#   def test_bubbleSort_should_handle_large_input
-#     testInput = []
-#     $i = 1000000
-#
-#     while $i > 0
-#       toPush = Random.rand(1000000)
-#       testInput.push(toPush)
-#       $i = $i - 1
-#     end
-#
-#     test = bubbleSort(testInput)
-#     assert_equal(testInput.sort, test)
-#   end
+class BubbleSortTest < Test::Unit::TestCase
+  def test_bubbleSort_should_handle_example_case
+    test = bubbleSort([8,3,2,10])
+    answer = [2,3,8,10]
 
-# end
+    assert_equal(answer, test);
+  end
+
+  def test_bubbleSort_should_handle_empty_input
+    test = bubbleSort([])
+    answer = []
+
+    assert_equal(answer, test);
+  end
+
+  # def test_bubbleSort_should_handle_large_input
+  #   testInput = []
+  #   $i = 1000000
+  #
+  #   while $i > 0
+  #     toPush = Random.rand(1000000)
+  #     testInput.push(toPush)
+  #     $i = $i - 1
+  #   end
+  #
+  #   test = bubbleSort(testInput)
+  #   assert_equal(testInput.sort, test)
+  # end
+
+end
