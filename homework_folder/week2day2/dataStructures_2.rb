@@ -65,11 +65,9 @@ class Node
 end
 
 class Binary_Search_Tree
-  attr_reader :root, :size
-
+  attr_reader :root
   def initialize
     @root = nil
-    @size = 0
   end
 
   def insert(val)
@@ -120,6 +118,21 @@ class Binary_Search_Tree
     end
 
     return false
+  end
+
+  def size
+    size = 0
+    queue = Queue.new
+    queue.enq(@root)
+
+    while queue.size > 0
+      current_node = queue.deq
+      size += 1
+      queue.enq(current_node.leftChild) if current_node.leftChild
+      queue.enq(current_node.rightChild) if current_node.rightChild
+    end
+
+    return size
   end
 end
 
@@ -222,17 +235,17 @@ class BinarySearchTreeClassTest < Test::Unit::TestCase
 
     assert_equal(false, test.search(10))
   end
-#
-#   def test_Binary_Search_Tree_delete_method_removes_node
-#     test = Binary_Search_Tree.new()
-#     test.insert(5)
-#     test.insert(10)
-#     test.insert(2)
-#
-#     assert_equal(3, test.size)
-#
-#     test.delete(10)
-#
-#     assert_equal(2, test.size)
-  # end
+
+  def test_Binary_Search_Tree_delete_method_removes_node
+    test = Binary_Search_Tree.new()
+    test.insert(5)
+    test.insert(10)
+    test.insert(2)
+
+    assert_equal(3, test.size)
+
+    test.delete(10)
+
+    assert_equal(2, test.size)
+  end
 end
