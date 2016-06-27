@@ -63,6 +63,20 @@ def insertionSort(input)
   return input
 end
 
+
+
+def selectionSort(input)
+  input.each_with_index do |element, index|
+    input = insert_and_shuffle(element, index, input)
+  end
+end
+
+def bubbleSort(input)
+  # your work here
+end
+
+private
+
 def swap(first_index, second_index, array)
   temp = array[first_index]
   array[first_index] = array[second_index]
@@ -86,16 +100,27 @@ def index_of_subarray_min(start, array)
   return min_index
 end
 
+def insert_and_shuffle(element, index, array)
+  key = element
+  # puts "Key: #{key}"
+  # puts "Array to Shuffle: #{array}"
+  while index >= 0
+    # puts "Index: #{index}"
+    if index == 0
+      array[index] = key
+    elsif key < array[index - 1]
+      array[index] = array[index -1]
+      # p array
+    else
+      array[index] = key
+      break
+    end
 
-def selectionSort(input)
-  # your work here
+    index -= 1
+  end
+  # p array
+  return array
 end
-
-def bubbleSort(input)
-  # your work here
-end
-
-
 
 # //////////////////////////////////////////////////////////
 # ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
@@ -118,7 +143,38 @@ class InsertionSortTest < Test::Unit::TestCase
     assert_equal(answer, test);
   end
 
-  def test_insertionSort_should_handle_large_input
+  # def test_insertionSort_should_handle_large_input
+  #   testInput = []
+  #   $i = 1000000
+  #
+  #   while $i > 0
+  #     toPush = Random.rand(1000000)
+  #     testInput.push(toPush)
+  #     $i = $i - 1
+  #   end
+  #
+  #   test = insertionSort(testInput)
+  #   assert_equal(testInput.sort, test)
+  # end
+
+end
+
+class SelectionSortTest < Test::Unit::TestCase
+  def test_selectionSort_should_handle_example_case
+    test = selectionSort([8,3,2,10])
+    answer = [2,3,8,10]
+
+    assert_equal(answer, test);
+  end
+
+  def test_selectionSort_should_handle_empty_input
+    test = selectionSort([])
+    answer = []
+
+    assert_equal(answer, test);
+  end
+
+  def test_selectionSort_should_handle_large_input
     testInput = []
     $i = 10000
 
@@ -128,43 +184,12 @@ class InsertionSortTest < Test::Unit::TestCase
       $i = $i - 1
     end
 
-    test = insertionSort(testInput)
+    test = selectionSort(testInput)
     assert_equal(testInput.sort, test)
   end
 
 end
-#
-# class SelectionSortTest < Test::Unit::TestCase
-#   def test_selectionSort_should_handle_example_case
-#     test = selectionSort([8,3,2,10])
-#     answer = [2,3,8,10]
-#
-#     assert_equal(answer, test);
-#   end
-#
-#   def test_selectionSort_should_handle_empty_input
-#     test = selectionSort([])
-#     answer = []
-#
-#     assert_equal(answer, test);
-#   end
-#
-#   def test_selectionSort_should_handle_large_input
-#     testInput = []
-#     $i = 1000000
-#
-#     while $i > 0
-#       toPush = Random.rand(1000000)
-#       testInput.push(toPush)
-#       $i = $i - 1
-#     end
-#
-#     test = selectionSort(testInput)
-#     assert_equal(testInput.sort, test)
-#   end
-#
-# end
-#
+
 # class BubbleSortTest < Test::Unit::TestCase
 #   def test_bubbleSort_should_handle_example_case
 #     test = bubbleSort([8,3,2,10])
