@@ -157,18 +157,18 @@ class MergeSortTest < Test::Unit::TestCase
     assert_equal(answer, test);
   end
 
-  # def test_mergeSort_should_handle_large_input
-  #   testInput = []
-  #   $i = 1000000
-  #
-  #   while $i > 0
-  #     toPush = Random.rand(1000000)
-  #     testInput.push(toPush)
-  #     $i = $i - 1
-  #   end
-  #
-  #   test = mergeSort(testInput)
-  #   assert_equal(testInput.sort, test)
-  # end
+  def test_mergeSort_should_handle_large_input
+    testInput = []
+    $i = 1000000
+
+    while $i > 0
+      toPush = Random.rand(1000000)
+      testInput.push(toPush)
+      $i = $i - 1
+    end
+
+    test = mergeSort(testInput)
+    assert_equal(testInput.sort, test)
+  end
 
 end
