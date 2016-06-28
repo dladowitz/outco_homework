@@ -1,4 +1,4 @@
- # /********************************************************************************** 
+ # /**********************************************************************************
  #  *                                 Homework IV                                    *
  #  *                                                                                *
  #  *  Problem: Linked List                                                          *
@@ -11,7 +11,7 @@
  #  *                  and output and object with the following properties:          *
  #  *                                                                                *
  #  *                  node.value: input value                                       *
- #  *                  node.next: a pointer to the next value (initiall null)        * 
+ #  *                  node.next: a pointer to the next value (initiall null)        *
  #  *                                                                                *
  #  *                  Example: { value: 1, next: null }                             *
  #  *                                                                                *
@@ -46,20 +46,12 @@
 
 
 class Node
-
-  def value
-    @value
-  end
-  def next
-    @next
-  end
-
   def initialize(val)
     @value = val
     @next = nil
   end
 
-  attr_accessor :val
+  attr_accessor :value
   attr_accessor :next
 end
 
@@ -75,15 +67,86 @@ class Linked_List
   attr_reader :listLength
 
   def append(val)
+    @listLength += 1
+    new_node = Node.new(val)
+    if @tail
+      @tail.next = new_node
+    else
+      @head = new_node
+    end
+    @tail = new_node
   end
 
   def insert(insertVal, searchVal)
+    new_node = Node.new(insertVal)
+
+    found = false
+    current_node = @head
+
+    while !found
+      if current_node.value == searchVal
+        found = true
+
+        if current_node.next
+          new_node.next = current_node.next
+        else
+          @tail = new_node
+        end
+
+        current_node.next = new_node
+        @listLength += 1
+      else
+        if current_node == @tail
+          return
+        else
+          current_node = current_node.next
+        end
+      end
+    end
   end
 
-  def delete(location)
+  def delete(index)
+    if index > @listLength
+      return "Out of range. Current list length is: #{listLength}"
+    end
+    if index == 0
+      if @head.next
+        @head = @head.next
+      else
+        @head = nil
+        @tail = nil
+      end
+      @listLength -= 1
+      return
+    elsif index == 1
+      parent_node = @head
+    else
+      (index-1).times do
+        parent_node = @head.next
+        puts "Parent Node: #{parent_node}"
+      end
+    end
+
+    deletion_node = parent_node.next
+    if deletion_node == @tail
+      parent_node.next = nil
+      @tail = parent_node
+    else
+      parent_node.next = deletion_node.next
+    end
+    @listLength -= 1
   end
 
   def contains(val)
+    current_node = @head
+
+    while current_node
+      if current_node.value == val
+        return true
+      end
+      current_node = current_node.next
+    end
+    return false
   end
 
 end
