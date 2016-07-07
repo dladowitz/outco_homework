@@ -72,7 +72,7 @@ function printUnorderedPairs(array) {
 
 /**
  * Problem 4:
- *  Time Complexity: O(log(n)) - Logarithic Time 
+ *  Time Complexity: O(log(n)) - Logarithic Time
  *  Auxiliary Space Complexity: O(log(n)) - Logarithic Space
  **/
 
@@ -127,3 +127,5 @@ function makeCombinedMatrix(arrayOne, arrayTwo) {
 
   return result;
 };
+
+// test
