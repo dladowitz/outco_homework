@@ -127,5 +127,3 @@ function makeCombinedMatrix(arrayOne, arrayTwo) {
 
   return result;
 };
-
-// test
