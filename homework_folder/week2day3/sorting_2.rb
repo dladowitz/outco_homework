@@ -32,32 +32,81 @@
  #  **********************************************************************/
 
 
-def quickSort(input)
+def quickSort(array)
+  if array.length <= 1
+    puts "returning an array of one"
+    return array
+  end
+
+  pivot_index = array.length/2
+  pivot_val = array[pivot_index]
+  before = []
+  after = []
+
+  array.each do |num|
+    if num < pivot_val
+      before << num
+    elsif num > pivot_val
+      after << num
+    end
+  end
+
+  puts "Before: #{before}"
+  puts "After: #{after}"
+
+  return quickSort(before) + [pivot_val] + quickSort(after)
 end
 
+array = [4,15,16,50,8,23,42,108]
 
-def mergeSort(array)
-  debug = false
-  puts "Starting mergeSort with #{array}" if debug
-  return array if array.length <= 1
+# p quickSort(array)
 
-  mid = (array.length-1) / 2
-  puts "mid: #{mid}" if debug
 
-  left = array[0..mid]
-  puts "left: #{left}" if debug
-  right = array[mid+1..-1]
-  puts "right: #{right}" if debug
+#
+# def mergeSort(array)
+#   debug = false
+#   puts "Starting mergeSort with #{array}" if debug
+#   return array if array.length <= 1
+#
+#   mid = (array.length-1) / 2
+#   puts "mid: #{mid}" if debug
+#
+#   left = array[0..mid]
+#   puts "left: #{left}" if debug
+#   right = array[mid+1..-1]
+#   puts "right: #{right}" if debug
+#
+#   left = mergeSort(left)
+#   right = mergeSort(right)
+#
+#   puts "About to call merge #{left} and #{right}" if debug
+#   array = merge(left, right)
+#
+#   puts "At bottom of megerSort array: #{array}" if debug
+#   return array
+# end
 
-  left = mergeSort(left)
-  right = mergeSort(right)
 
-  puts "About to call merge #{left} and #{right}" if debug
-  array = merge(left, right)
 
-  puts "At bottom of megerSort array: #{array}" if debug
-  return array
-end
+
+# 
+# def merge_sort(array)
+#   if array.length <= 1
+#     puts "Array length: #{array.length}"
+#     return array
+#   end
+#
+#   mid = array.length/2
+#   left = array[0..mid]
+#   right = array[mid+1..-1]
+#
+#   left = merge_sort(left)
+#   right = merge_sort(right)
+#
+#   # merge(left, right)
+# end
+#
+# merge_sort(array)
 
 private
 
@@ -109,7 +158,7 @@ end
 # ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
 # //////////////////////////////////////////////////////////
 
-require 'test/unit'
+# require 'test/unit'
 
 # class QuickSortTest < Test::Unit::TestCase
 #   def test_quickSort_should_handle_example_case
@@ -142,33 +191,33 @@ require 'test/unit'
 #
 # end
 
-class MergeSortTest < Test::Unit::TestCase
-  def test_mergeSort_should_handle_example_case
-    test = mergeSort([8,3,2,10])
-    answer = [2,3,8,10]
-
-    assert_equal(answer, test);
-  end
-
-  def test_mergeSort_should_handle_empty_input
-    test = mergeSort([])
-    answer = []
-
-    assert_equal(answer, test);
-  end
-
-  def test_mergeSort_should_handle_large_input
-    testInput = []
-    $i = 1000000
-
-    while $i > 0
-      toPush = Random.rand(1000000)
-      testInput.push(toPush)
-      $i = $i - 1
-    end
-
-    test = mergeSort(testInput)
-    assert_equal(testInput.sort, test)
-  end
-
-end
+# class MergeSortTest < Test::Unit::TestCase
+#   def test_mergeSort_should_handle_example_case
+#     test = mergeSort([8,3,2,10])
+#     answer = [2,3,8,10]
+#
+#     assert_equal(answer, test);
+#   end
+#
+#   def test_mergeSort_should_handle_empty_input
+#     test = mergeSort([])
+#     answer = []
+#
+#     assert_equal(answer, test);
+#   end
+#
+#   def test_mergeSort_should_handle_large_input
+#     testInput = []
+#     $i = 1000000
+#
+#     while $i > 0
+#       toPush = Random.rand(1000000)
+#       testInput.push(toPush)
+#       $i = $i - 1
+#     end
+#
+#     test = mergeSort(testInput)
+#     assert_equal(testInput.sort, test)
+#   end
+#
+# end

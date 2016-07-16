@@ -66,6 +66,28 @@ class Linked_List
   attr_reader :tail
   attr_reader :listLength
 
+  def print_reverse(node = nil)
+    if !node
+      node = @head
+    end
+
+    if node == @tail
+      print "#{node.value}, "
+      return
+    else
+      print_reverse(node.next)
+      print "#{node.value}, "
+    end
+  end
+
+  def print_forward
+    current_node = @head
+    while current_node
+      print "#{current_node.value}, "
+      current_node = current_node.next
+    end
+  end
+
   def append(val)
     @listLength += 1
     new_node = Node.new(val)
@@ -149,180 +171,217 @@ class Linked_List
     return false
   end
 
+  def reverse
+    previous = nil
+    current = @head
+    @tail = @head
+
+    while current
+      next_node = current.next
+      current.next = previous
+      previous = current
+      current = next_node
+    end
+
+    @head = previous
+  end
+
+  def swap(a, b)
+    first_node = nil
+    second_node = nil
+
+    current = @head
+    while current
+      if current.value == a
+        first_node = current
+      end
+      if current.value == be
+        second_node = current
+      end
+    end
+  end
+
 end
 
 
-
+# list = Linked_List.new
+# list.append 1
+# list.append 2
+# list.append 3
+#
+# list.reverse
+# puts ""
+# list.print_forward
 
 
 # //////////////////////////////////////////////////////////
 # ///////////////  DO NOT TOUCH TEST BELOW!!!  /////////////
 # //////////////////////////////////////////////////////////
-
-require 'test/unit'
-
-class LinkedListNodeTest < Test::Unit::TestCase
-  def test_creation_of_node
-    test = Node.new(3)
-
-    assert_not_equal(nil, test)
-  end
-  def test_encoding_a_value
-    test = Node.new(5)
-
-    assert_equal(5, test.value)
-    assert_equal(nil, test.next)
-  end
-  def test_pointing_to_another_node
-    initial = Node.new(5)
-    target = Node.new(10)
-    initial.next = target
-
-    assert_equal(5, initial.value)
-    assert_equal(10, initial.next.value)
-  end
-end
-
-class LinkedListClassTest < Test::Unit::TestCase
-  def test_linked_list_properties_existence
-    test = Linked_List.new()
-
-    assert_respond_to(test, :head)
-    assert_respond_to(test, :tail)
-    assert_respond_to(test, :listLength)
-
-  end
-
-  def test_linked_list_methods_existence
-    test = Linked_List.new()
-
-    assert_respond_to(test, :append)
-    assert_respond_to(test, :insert)
-    assert_respond_to(test, :delete)
-    assert_respond_to(test, :contains)
-  end
-
-  def test_linked_list_append_method_single_node
-    test = Linked_List.new()
-    test.append(5)
-
-    assert_equal(5, test.head.value)
-    assert_equal(5, test.tail.value)
-  end
-
-  def test_linked_list_append_method_two_node
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-
-    assert_equal(5, test.head.value)
-    assert_equal(10, test.tail.value)
-  end
-
-  def test_linked_list_insert_method_between_nodes
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.insert(13, 5)
-
-    assert_equal(5, test.head.value)
-    assert_equal(13, test.head.next.value)
-    assert_equal(10, test.head.next.next.value)
-    assert_equal(10, test.tail.value)
-  end
-
-  def test_linked_list_insert_method_modify_tail
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.insert(13, 10)
-
-    assert_equal(5, test.head.value)
-    assert_equal(10, test.head.next.value)
-    assert_equal(13, test.head.next.next.value)
-    assert_equal(13, test.tail.value)
-  end
-
-  def test_linked_list_insert_method_no_searchValue_match
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.insert(13, 17)
-
-    assert_equal(5, test.head.value)
-    assert_equal(10, test.head.next.value)
-    assert_equal(10, test.tail.value)
-    assert_equal(2, test.listLength)
-  end
-
-  def test_linked_list_delete_method_delete_middle
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-    test.delete(1)
-
-    assert_equal(5, test.head.value)
-    assert_equal(15, test.tail.value)
-    assert_equal(15, test.head.next.value)
-    assert_equal(2, test.listLength)
-  end
-
-  def test_linked_list_delete_method_delete_head
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-    test.delete(0)
-
-    assert_equal(10, test.head.value)
-    assert_equal(15, test.tail.value)
-    assert_equal(15, test.head.next.value)
-    assert_equal(2, test.listLength)
-  end
-
-  def test_linked_list_delete_method_delete_tail
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-    test.delete(2)
-
-    assert_equal(5, test.head.value)
-    assert_equal(10, test.tail.value)
-    assert_equal(10, test.head.next.value)
-    assert_equal(2, test.listLength)
-  end
-
-  def test_linked_list_delete_method_delete_out_of_range
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-    test.delete(5)
-
-    assert_equal(5, test.head.value)
-    assert_equal(15, test.tail.value)
-    assert_equal(10, test.head.next.value)
-    assert_equal(15, test.head.next.next.value)
-    assert_equal(3, test.listLength)
-  end
-
-  def test_linked_list_contains_method_when_true
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-
-    assert_equal(true, test.contains(10))
-  end
-
-  def test_linked_list_contains_method_when_false
-    test = Linked_List.new()
-    test.append(5)
-    test.append(10)
-    test.append(15)
-
-    assert_equal(false, test.contains(75))
-  end
-end
+#
+# require 'test/unit'
+#
+# class LinkedListNodeTest < Test::Unit::TestCase
+#   def test_creation_of_node
+#     test = Node.new(3)
+#
+#     assert_not_equal(nil, test)
+#   end
+#   def test_encoding_a_value
+#     test = Node.new(5)
+#
+#     assert_equal(5, test.value)
+#     assert_equal(nil, test.next)
+#   end
+#   def test_pointing_to_another_node
+#     initial = Node.new(5)
+#     target = Node.new(10)
+#     initial.next = target
+#
+#     assert_equal(5, initial.value)
+#     assert_equal(10, initial.next.value)
+#   end
+# end
+#
+# class LinkedListClassTest < Test::Unit::TestCase
+#   def test_linked_list_properties_existence
+#     test = Linked_List.new()
+#
+#     assert_respond_to(test, :head)
+#     assert_respond_to(test, :tail)
+#     assert_respond_to(test, :listLength)
+#
+#   end
+#
+#   def test_linked_list_methods_existence
+#     test = Linked_List.new()
+#
+#     assert_respond_to(test, :append)
+#     assert_respond_to(test, :insert)
+#     assert_respond_to(test, :delete)
+#     assert_respond_to(test, :contains)
+#   end
+#
+#   def test_linked_list_append_method_single_node
+#     test = Linked_List.new()
+#     test.append(5)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(5, test.tail.value)
+#   end
+#
+#   def test_linked_list_append_method_two_node
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(10, test.tail.value)
+#   end
+#
+#   def test_linked_list_insert_method_between_nodes
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.insert(13, 5)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(13, test.head.next.value)
+#     assert_equal(10, test.head.next.next.value)
+#     assert_equal(10, test.tail.value)
+#   end
+#
+#   def test_linked_list_insert_method_modify_tail
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.insert(13, 10)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(10, test.head.next.value)
+#     assert_equal(13, test.head.next.next.value)
+#     assert_equal(13, test.tail.value)
+#   end
+#
+#   def test_linked_list_insert_method_no_searchValue_match
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.insert(13, 17)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(10, test.head.next.value)
+#     assert_equal(10, test.tail.value)
+#     assert_equal(2, test.listLength)
+#   end
+#
+#   def test_linked_list_delete_method_delete_middle
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#     test.delete(1)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(15, test.tail.value)
+#     assert_equal(15, test.head.next.value)
+#     assert_equal(2, test.listLength)
+#   end
+#
+#   def test_linked_list_delete_method_delete_head
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#     test.delete(0)
+#
+#     assert_equal(10, test.head.value)
+#     assert_equal(15, test.tail.value)
+#     assert_equal(15, test.head.next.value)
+#     assert_equal(2, test.listLength)
+#   end
+#
+#   def test_linked_list_delete_method_delete_tail
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#     test.delete(2)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(10, test.tail.value)
+#     assert_equal(10, test.head.next.value)
+#     assert_equal(2, test.listLength)
+#   end
+#
+#   def test_linked_list_delete_method_delete_out_of_range
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#     test.delete(5)
+#
+#     assert_equal(5, test.head.value)
+#     assert_equal(15, test.tail.value)
+#     assert_equal(10, test.head.next.value)
+#     assert_equal(15, test.head.next.next.value)
+#     assert_equal(3, test.listLength)
+#   end
+#
+#   def test_linked_list_contains_method_when_true
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#
+#     assert_equal(true, test.contains(10))
+#   end
+#
+#   def test_linked_list_contains_method_when_false
+#     test = Linked_List.new()
+#     test.append(5)
+#     test.append(10)
+#     test.append(15)
+#
+#     assert_equal(false, test.contains(75))
+#   end
+# end
